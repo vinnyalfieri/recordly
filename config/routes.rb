@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
   get 'users/new'
-
+  root 'artists#index'
   resources :albums
   resources :songs
   resources :artists

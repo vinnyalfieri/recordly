@@ -1,2 +1,44 @@
 class ArtistsController < ApplicationController
+
+  def index
+    @artists = Artist.all
+  end
+
+  def show
+    @artist = Artist.find(params[:id])
+    @songs = @artist.songs
+    @albums = @artist.albums
+  end
+
+  def new
+    @artist = Artist.new
+  end
+
+  def edit
+
+  end
+
+  def create
+    @artist = Artist.create(artist_params)
+    if @artist.persisted?
+      redirect_to root_path
+    end
+  end
+
+  def update
+
+  end
+
+
+  def destroy
+
+  end
+
+  private
+
+  def artist_params
+    params.require(:artist).permit(:name)
+  end
+
+
 end
