@@ -44,6 +44,13 @@
             <li><%= link_to "New Album", new_album_path %></li>
           </ul>
         </li>
+        <% if !@current_user %>
+        <li><%= link_to("Sign Up", users_new_path) %></li>
+        <li><%= link_to("Login", sessions_login_path) %></li>
+        <% else %>
+        <li><%= link_to("#{@current_user.name}'s Favorites", '/favorites') %></li>
+        <li><%= link_to("Logout", sessions_logout_path) %></li>
+        <% end %>
       </ul>
       <form class="navbar-form navbar-left" action="/search" role="search">
         <div class="form-group">

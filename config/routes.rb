@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
 
+  get 'sessions/login'
+
   get 'users/new'
+
+  
   root 'artists#index'
   resources :albums
   resources :songs
   resources :artists
   get 'search' => 'search#search', as: :search
+  post '/users/create'
+  post '/sessions/try_login'
+  get '/sessions/logout'
+  resources :favorites, :only => [:index, :create, :new]
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,6 +1,7 @@
 class Album < ActiveRecord::Base
-  belongs_to :artist
   has_many :songs, dependent: :destroy
+  belongs_to :artist
+  belongs_to :favoritable
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_associated :artist

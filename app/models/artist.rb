@@ -1,6 +1,7 @@
 class Artist < ActiveRecord::Base
   has_many :albums
   has_many :songs, through: :albums
+  belongs_to :favoritable
   validates_presence_of :name
   validates_uniqueness_of :name
 

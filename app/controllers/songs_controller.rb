@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  before_filter :authenticate_user
+  
   def index
     @songs = Song.all
   end

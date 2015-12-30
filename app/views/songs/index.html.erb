@@ -1,5 +1,11 @@
 <ul>
   <% @songs.each do |song|%>
-    <li><%= link_to song.title, song %></li>
+    <li><%= link_to song.title, song %> 
+      <%= form_tag(favorites_path(song), method: "POST") do %>
+        <%= hidden_field_tag 'song', song.id %>
+        <%= submit_tag "Favorite", class: "btn btn-xs btn-primary" %>
+        <% end %>
+    </li>
+    <br>
   <% end %>
 </ul>
