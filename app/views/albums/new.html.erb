@@ -1,4 +1,24 @@
 <%= form_for @album, url: {action: "create"} do |f| %>
-  Title: <%= f.text_field :name %>
-  <%= f.submit "Create" %>
+  Album Name:
+  <%= f.text_field :name %>
+  <div class="field album-form">
+  <br>
+    Songs: 
+    <%= f.collection_select(:song_ids, Song.all, :id, :title, :prompt => true) %>
+    <%= f.fields_for(:song, @song) do |song_form| %>
+      <p>
+      <br>
+      New Song: 
+      <%= song_form.text_field :title %>
+      </p>
+    <% end %>
+  </div>
+  <div class="field artist-form">
+    Artist: 
+    <%= f.collection_select(:artist_id, Artist.all, :id, :name, :prompt => true) %>
+    <%= f.fields_for(:artist, @artist) do |artist_form| %>
+      New Artist: <%= artist_form.text_field :name %>
+    <% end %>
+  </div>
+  <%= f.submit "Create", :class => 'btn btn-success' %>
 <% end %>

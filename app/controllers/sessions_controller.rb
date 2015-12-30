@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         session[:user_id] = authorized_user.id
         format.html { redirect_to root_path, notice: "Welcome Back #{authorized_user.name}" }
       else
-        format.html { render login, notice: "Failed to Login, Please Try Again" }
+        format.html { render 'login', notice: "Failed to Login, Please Try Again" }
       end
     end
   end

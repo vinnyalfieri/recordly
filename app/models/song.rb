@@ -12,8 +12,28 @@ class Song < ActiveRecord::Base
     @album = Album.create_from_song(params)
     self.album = @album
     self.artist = @artist
-    artist.albums << @album
+    @artist.albums << @album
     self.save
+  end
+
+  def self.create_from_album(params)
+    if params["song_ids"] == ""
+      @song = Song.create(params["song"])
+    else
+      @song = Song.find(params["song_ids"])
+    end
+  end
+
+  def self.create_from_artist(params, object)
+    if params["song_ids"] == ""
+      @song = Song.create(params["song"])
+      @song.artist = object
+    else
+      @song = Song.find(params["song_ids"])
+      @song.artist = object
+    end
+    @song.save
+    @song
   end
 
 end

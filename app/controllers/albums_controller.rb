@@ -17,6 +17,8 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
+    @song = Song.new
+    @artist = Artist.new
   end
 
   def edit
@@ -24,7 +26,8 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.create(album_params)
+    @album = Album.new
+    @album.create_artist_song(album_params)
     respond_to do |format|
       if @album.save
         format.html { redirect_to @album, notice: 'Album was successfully created.' }
@@ -46,7 +49,7 @@ class AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:name)
+    params.require(:album).permit(:name, :song_ids, :artist_id, :song => [:title], :artist => [:name])
   end
 
 end
