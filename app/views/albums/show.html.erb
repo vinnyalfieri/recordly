@@ -1,0 +1,18 @@
+<p>
+  Album Name: <%= @album.name %>
+</p>
+<% if @artist %>
+  <p>
+    Artist Name: <%= link_to(@artist.name, @artist) %> 
+  </p>
+<% end %>
+<br>
+<% if @songs %>
+  <p>
+    <ul>
+      <% @songs.each do |song| %>
+        <li><%= link_to(song.title, song) %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>

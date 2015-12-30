@@ -18,9 +18,14 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.create(song_params)
-    if @song.persisted?
-      redirect_to songs_path
+    @song = Song.new
+    @song.create_album_artist(song_params)
+    respond_to do |format|
+      if @song.save
+        format.html { redirect_to @song, notice: 'Song was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
     end
   end
 

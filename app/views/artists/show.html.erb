@@ -2,12 +2,9 @@
 
 <br>
 
-<h3>Albums and Songs</h3>
-<% @albums.each do |album| %>
-  Album: <%= link_to(album.name, album) %>
-<ul>
-  <% album.songs.each do |song| %>
-    <li><%= link_to(song.title, song) %></li>
-  <% end %>
-</ul>
-<% end %>
+<h3>Albums</h3>
+  <ul>
+    <% @albums.each do |album| %>
+      <li><%= link_to(album.name, album) %></li>
+    <% end %>
+  </ul>

@@ -20,8 +20,12 @@ class ArtistsController < ApplicationController
 
   def create
     @artist = Artist.create(artist_params)
-    if @artist.persisted?
-      redirect_to root_path
+    respond_to do |format|
+      if @artist.save
+        format.html { redirect_to @artist, notice: 'Artist was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
     end
   end
 
