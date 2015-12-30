@@ -1,0 +1,25 @@
+<ul>   
+  <% if @results.artists %>
+    <% @results.artists.each do |artist| %>
+      <li>
+        <%= link_to(artist.name, artist) %>
+      </li>
+    <% end %>
+  <% end %>
+
+  <% if @results.albums %>
+    <% @results.albums.each do |album| %>
+      <li>
+        <%= link_to(album.name, album) %>
+      </li>
+    <% end %>
+  <% end %>
+
+  <% if @results.songs %>
+    <% @results.songs.each do |song| %>
+     <li>
+       <%= link_to(song.title, song) %>
+     </li>
+    <% end %>
+  <% end %>
+</ul>
