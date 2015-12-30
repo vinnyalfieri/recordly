@@ -1,6 +1,6 @@
 <h1>Search Results</h1>
 
-<% if @results.status %>
+<% if !@results.status %>
   <%= render 'search/no_results' %>
 <% else %>
   <%= render 'search/results' %>

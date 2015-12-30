@@ -36,7 +36,7 @@ class Search
   end
 
   def status
-    if self.artists == nil || self.albums == nil || self.songs == nil
+    if self.artists == nil && self.albums == nil && self.songs == nil
       return false
     else
       return true
