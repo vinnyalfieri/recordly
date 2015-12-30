@@ -1,5 +1,10 @@
 <ul>
   <% @albums.each do |album|%>
-    <li><%= link_to album.name, album %></li>
+    <li><%= link_to album.name, album %>
+    <%= form_tag(favorites_path(album), method: "POST") do %>
+        <%= hidden_field_tag 'album', album.id %>
+        <%= submit_tag "Favorite", class: "btn btn-xs btn-primary" %>
+      <% end %>
+    </li>
   <% end %>
 </ul>

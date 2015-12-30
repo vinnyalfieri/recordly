@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :favorites, as: :favoritable
+  has_many :favorites, inverse_of: :user
   validates :name, presence: true
   validates :email, presence: true
   validates :email, uniqueness: true
