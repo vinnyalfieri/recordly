@@ -1,7 +1,13 @@
-<% if !@favorites.size == 0 %>
-  <% @favorites.each do |favorite| %>
-  
-  <% end %>
-<% else %>
-  <h1>You Don't Have Any Favorites. Try Adding Some!!!!</h1>
+<% if @favorites.size != 0 %>
+<ul>
+    <% @favorites.each do |favorite| %>
+      <% if favorite.favoritable_type != "Song" %>
+       <li> <%= link_to(favorite.favoritable.name, favorite.favoritable) %></li>
+      <% else %>
+        <li><%= link_to(favorite.favoritable.title, favorite.favoritable) %></li>
+      <% end %>
+    <% end %>
+  <% else %>
+    <h1>You Don't Have Any Favorites. Try Adding Some!!!!</h1>
+</ul>
 <% end %>
