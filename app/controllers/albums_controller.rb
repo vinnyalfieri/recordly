@@ -43,7 +43,12 @@ class AlbumsController < ApplicationController
 
 
   def destroy
-
+    @album = Album.find(params[:id])
+    @album.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js # rails default: go to views/todos/destroy.js.erb
+    end
   end
 
   private

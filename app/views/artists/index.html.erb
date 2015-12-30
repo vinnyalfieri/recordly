@@ -1,10 +1,11 @@
 <ul>
   <% @artists.each do |artist|%>
-    <li>
+    <li id="<%= artist.id %>">
     <%= link_to artist.name, artist %>
       <%= form_tag(favorites_path(artist), method: "POST") do %>
           <%= hidden_field_tag 'artist', artist.id %>
           <%= submit_tag "Favorite", class: "btn btn-xs btn-primary" %>
+          <%= link_to "delete", artist_path(artist), method: :delete, remote: true, class: "btn btn-xs btn-danger" %>
       <% end %>
     </li>
   <% end %>

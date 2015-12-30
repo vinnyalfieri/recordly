@@ -37,9 +37,13 @@ class ArtistsController < ApplicationController
 
   end
 
-
   def destroy
-
+    @artist = Artist.find(params[:id])
+    @artist.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js # rails default: go to views/todos/destroy.js.erb
+    end
   end
 
   private

@@ -1,9 +1,10 @@
 <ul>
   <% @songs.each do |song|%>
-    <li><%= link_to song.title, song %> 
+    <li id="<%= song.id %>"><%= link_to song.title, song %> 
       <%= form_tag(favorites_path(song), method: "POST") do %>
         <%= hidden_field_tag 'song', song.id %>
         <%= submit_tag "Favorite", class: "btn btn-xs btn-primary" %>
+        <%= link_to "delete", song_path(song), method: :delete, remote: true, class: "btn btn-xs btn-danger" %>
         <% end %>
     </li>
     <br>

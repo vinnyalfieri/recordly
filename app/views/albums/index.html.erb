@@ -1,9 +1,11 @@
 <ul>
   <% @albums.each do |album|%>
-    <li><%= link_to album.name, album %>
-    <%= form_tag(favorites_path(album), method: "POST") do %>
+    <li id="<%= album.id %>">
+    <%= link_to album.name, album %>
+      <%= form_tag(favorites_path(album), method: "POST") do %>
         <%= hidden_field_tag 'album', album.id %>
         <%= submit_tag "Favorite", class: "btn btn-xs btn-primary" %>
+        <%= link_to "delete", album_path(album), method: :delete, remote: true, class: "btn btn-xs btn-danger" %>
       <% end %>
     </li>
   <% end %>

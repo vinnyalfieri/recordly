@@ -37,7 +37,12 @@ class SongsController < ApplicationController
 
 
   def destroy
-
+    @song = Song.find(params[:id])
+    @song.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js # rails default: go to views/todos/destroy.js.erb
+    end
   end
 
   private
